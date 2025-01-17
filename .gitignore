@@ -1,0 +1,41 @@
+# Dev Notes
+NOTES
+
+# Visual Studio files
+.vs/
+*.sln
+*.user
+*.suo
+*.ide
+
+# Build results
+bin/
+obj/
+
+# NuGet Packages
+*.nupkg
+packages/
+*.nuspec
+
+# Visual Studio Code files
+.vscode/
+*.code-workspace
+
+# Rider files
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Configuration files
+*.config
+*.resx
+
+# User-specific files
+*.pdb
+*.mdb
+*.cache
