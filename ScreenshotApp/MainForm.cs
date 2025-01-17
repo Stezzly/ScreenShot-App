@@ -10,32 +10,49 @@ namespace ScreenshotApp
         public MainForm()
         {
             InitializeComponent();
+
+            // Set initial transparency
+            this.Opacity = 0.8; // 80% opacity
         }
 
         private void btnScreenshot_Click(object sender, EventArgs e)
         {
-            // Call the method to capture a screenshot
-            CaptureScreenshot();
+            // Make the form completely transparent for the screenshot
+            this.Opacity = 0; // 0% opacity (completely transparent)
+
+            // Allow the form to update before taking the screenshot
+
+            // Take the screenshot
+            TakeScreenshot();
+
+            // Restore the form's opacity
+            this.Opacity = 0.8; // 80% opacity
         }
 
-        private void CaptureScreenshot()
+        private void TakeScreenshot()
         {
-            // Define the area to capture
+            // Create a bitmap of the same size as the form
             Rectangle bounds = new Rectangle(this.Location, this.Size);
             using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
-                    // Capture the screenshot
+                    // Take the screenshot of the area behind the form
                     g.CopyFromScreen(bounds.Location, Point.Empty, bounds.Size);
                 }
 
-                // Save the screenshot to the project directory
-                string filePath = $"screenshot_{DateTime.Now:yyyyMMdd_HHmmss}.png";
-                bitmap.Save(filePath, ImageFormat.Png);
+                // Define the folder path (bin\Debug or bin\Release)
+                string folderPath = AppDomain.CurrentDomain.BaseDirectory; // Gets the path of the bin directory
 
-                // Display a message box confirming the screenshot was taken
-                MessageBox.Show($"Screenshot saved as: {filePath}", "Screenshot", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Create a valid filename
+                string fileName = $"screenshot_{DateTime.Now:yyyyMMdd_HHmmss}.png";
+                fileName = fileName.Replace("/", "-").Replace(":", "-"); // Replace any invalid characters
+
+                // Save the screenshot to a file in the bin folder
+                bitmap.Save(System.IO.Path.Combine(folderPath, fileName), ImageFormat.Png);
+
+                // Notify the user
+                MessageBox.Show($"Screenshot saved: {fileName}\nLocation: {folderPath}", "Screenshot Taken", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
