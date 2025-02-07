@@ -1,7 +1,7 @@
 # Screenshot App
 
 ## Overview
-ScreenshotApp is a .NET-based application designed to capture and manage screenshots easily. The application provides a user-friendly interface that allows users to take screenshots with a single click and save them in a designated folder. Built using Windows Forms, ScreenshotApp leverages the power of the .NET Framework to ensure smooth performance and compatibility across various Windows operating systems.
+ScreenshotApp is a **Windows-only** .NET-based application designed to capture and manage screenshots easily. The application provides a user-friendly interface that allows users to take screenshots with a single click and save them in a designated folder. Built using Windows Forms, ScreenshotApp leverages the power of the .NET Framework to ensure smooth performance and compatibility across various Windows operating systems.
 
 ### Features
 - **Easy Screenshot Capture:** Quickly take screenshots of the entire screen or selected areas.
